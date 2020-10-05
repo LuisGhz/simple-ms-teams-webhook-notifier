@@ -7550,7 +7550,7 @@ const axios_1 = __importDefault(__webpack_require__(53));
 const build_card_class_1 = __webpack_require__(190);
 function run() {
     // Get inputs
-    const webhook_url = core.getInput('webhook_url');
+    const webhook_url = core.getInput('webhook_url', { required: true });
     const summary = core.getInput('summary');
     const title = core.getInput('title');
     const text = core.getInput('text');

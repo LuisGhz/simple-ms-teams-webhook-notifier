@@ -4,7 +4,7 @@ import { BuildCard } from './build-card.class';
 
 function run() {
   // Get inputs
-  const webhook_url = core.getInput('webhook_url');
+  const webhook_url = core.getInput('webhook_url', { required: true });
   const summary = core.getInput('summary');
   const title = core.getInput('title');
   const text = core.getInput('text');
