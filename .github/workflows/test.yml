@@ -15,7 +15,16 @@ jobs:
       id: run_action
       uses: ./
       with: 
-        my_input: 'World'
-
-    - name: log action output
-      run: echo ${{steps.run_action.outputs.my_output}}     
+        webhook_url: ${{ secrets.WEBHOOK_URL }}
+        summary: 'Summary'
+        title: 'Title'
+        theme-color: '28a745'
+        sections: |
+          - activityTitle: "Section title"
+            activitySubtitle: "Section subtitle"
+            activityImage: "https://github.com/luisghz.png"
+            facts:
+              - name: 'Fact 1'
+                value: 'Value 1'
+              - name: 'Fact 2'
+                value: 'Value 2'
