@@ -2425,19 +2425,13 @@ class BuildCard {
         this.card["themeColor"] = themeColor;
     }
     setSections(sections) {
-        if (sections === '') {
-            this.card["sections"] = {};
-        }
-        else {
+        if (sections !== '') {
             const sectionsObject = yaml.parse(sections);
             this.card["sections"] = sectionsObject;
         }
     }
     setPotentialAction(potentialAction) {
-        if (potentialAction === '') {
-            this.card["potentialAction"] = {};
-        }
-        else {
+        if (potentialAction !== '') {
             const potentialActionObject = yaml.parse(potentialAction);
             this.card["potentialAction"] = potentialActionObject;
         }
