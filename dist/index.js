@@ -2407,13 +2407,24 @@ module.exports = CancelToken;
 
 "use strict";
 
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const core = __importStar(__webpack_require__(470));
 const yaml = __webpack_require__(521);
 class BuildCard {
     constructor() {
         this.card = {};
         this.card["@type"] = "MessageCard";
         this.card["@context"] = "https://schema.org/extensions";
+        yaml.defaultOptions = {
+            indent: +core.getInput('yaml-ident')
+        };
     }
     setTitle(title) {
         this.card["title"] = title;
