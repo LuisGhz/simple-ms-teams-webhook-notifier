@@ -1,12 +1,15 @@
 import * as core from '@actions/core';
 
 function run() {
-  const name: string = core.getInput('my_input');
-  if (name) {
-    core.debug(`Hello ${name}!`);
-    return core.setOutput('my_output', `Hello ${name}!`);
-  }
-  core.setFailed('my_input not specified!');
+  // Get inputs
+  const webhook_url = core.getInput('webhook_url');
+  const summary = core.getInput('summary');
+  const title = core.getInput('title');
+  const theme_color = core.getInput('theme-color');
+  const sections = core.getInput('sections');
+  const potential_action = core.getInput('potential-action');
+
+
 }
 
 run();
