@@ -7555,7 +7555,6 @@ function run() {
     buildCard.setSections(sections);
     buildCard.setPotentialAction(potential_action);
     builtCard = buildCard.toObject();
-    core.info(JSON.stringify(builtCard, null, 4));
     axios_1.default.post(webhook_url, builtCard)
         .then(res => {
         core.info(res.data);
