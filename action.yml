@@ -2,9 +2,29 @@ name: 'Github Action Template'
 description: 'simple typescript template for building GitHub Actions'
 author: 'notiz.dev'
 inputs:
-  my_input:
-    description: 'input description here'
-    default: 'World'
+  webhook_url:
+    description: Webhook url
+    required: true
+  summary:
+    description: Summary field
+    required: false
+    default: ''
+  title:
+    description: Title field
+    required: false
+    default: ''
+  theme-color:
+    description: Theme color field
+    required: false
+    default: 28a745
+  sections:
+    description: Sections field
+    required: false
+    default: ''
+  potential-action:
+    description: Actions field
+    required: false
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'
