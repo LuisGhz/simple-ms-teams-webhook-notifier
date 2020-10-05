@@ -1,11 +1,18 @@
+import * as core from '@actions/core';
 const yaml = require('yaml');
+
 
 export class BuildCard {
     private card: any;
+
     constructor() {
         this.card = {};
         this.card["@type"] = "MessageCard";
         this.card["@context"] = "https://schema.org/extensions";
+
+        yaml.defaultOptions = {
+            indent: +core.getInput('yaml-ident')
+        }
     }
 
     setTitle(title: string): void {
