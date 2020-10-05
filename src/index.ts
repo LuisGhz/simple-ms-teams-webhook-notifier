@@ -24,8 +24,6 @@ function run() {
 
   builtCard = buildCard.toObject();
 
-  core.info(JSON.stringify(builtCard, null, 4));
-
   axios.post(webhook_url, builtCard)
   .then(res => {
     core.info(res.data);
