@@ -21,15 +21,24 @@ export class BuildCard {
     }
 
     setSections(sections: string): void {
-        const sectionsObject: any = yaml.parse(sections);
+        if (sections === '') {
+            this.card["sections"] = {};
+        } else {
+            const sectionsObject: any = yaml.parse(sections);
+            
+            this.card["sections"] = sectionsObject;
+        }
 
-        this.card["sections"] = sectionsObject;
     }
 
     setPotentialAction(potentialAction: string): void {
-        const potentialActionObject: any = yaml.parse(potentialAction);
-
-        this.card["potentialAction"] = potentialActionObject;
+        if (potentialAction === '') {
+            this.card["potentialAction"] = {};
+        } else {
+            const potentialActionObject: any = yaml.parse(potentialAction);
+    
+            this.card["potentialAction"] = potentialActionObject;
+        }
 
     }
 
