@@ -24,7 +24,8 @@
   "author": "notiz.dev",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6"
+    "@actions/core": "^1.2.6",
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "@types/node": "^12.7.12",
