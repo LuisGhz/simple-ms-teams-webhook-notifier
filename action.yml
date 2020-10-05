@@ -1,4 +1,4 @@
-name: 'Github Action Template'
+name: 'Simple MS Teams Webhook notifier'
 description: 'simple typescript template for building GitHub Actions'
 author: 'LuisGhz'
 inputs:
@@ -37,5 +37,5 @@ runs:
   using: 'node12'
   main: 'dist/index.js'
 branding:
-  color: "yellow"
+  color: "blue"
   icon: "bell"  
