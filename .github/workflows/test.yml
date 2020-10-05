@@ -35,6 +35,6 @@ jobs:
         potential-action: |
             - "@type": "OpenUri"
               name: "Open Executed Action"
-              target:
+              targets:
                 - os: "default"
                   uri: "https://docs.microsoft.com/outlook/actionable-messages"
