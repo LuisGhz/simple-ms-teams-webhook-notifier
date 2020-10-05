@@ -1890,12 +1890,22 @@ class BuildCard {
         this.card["themeColor"] = themeColor;
     }
     setSections(sections) {
-        const sectionsObject = yaml.parse(sections);
-        this.card["sections"] = sectionsObject;
+        if (sections === '') {
+            this.card["sections"] = {};
+        }
+        else {
+            const sectionsObject = yaml.parse(sections);
+            this.card["sections"] = sectionsObject;
+        }
     }
     setPotentialAction(potentialAction) {
-        const potentialActionObject = yaml.parse(potentialAction);
-        this.card["potentialAction"] = potentialActionObject;
+        if (potentialAction === '') {
+            this.card["potentialAction"] = {};
+        }
+        else {
+            const potentialActionObject = yaml.parse(potentialAction);
+            this.card["potentialAction"] = potentialActionObject;
+        }
     }
     toObject() {
         return this.card;
