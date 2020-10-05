@@ -1,6 +1,6 @@
 name: 'Github Action Template'
 description: 'simple typescript template for building GitHub Actions'
-author: 'notiz.dev'
+author: 'LuisGhz'
 inputs:
   webhook_url:
     description: Webhook url
