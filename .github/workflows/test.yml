@@ -18,6 +18,7 @@ jobs:
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Summary'
         title: 'Title'
+        text: 'Text'
         theme-color: '28a745'
         sections: |
           - images:

@@ -13,6 +13,10 @@ inputs:
     description: Title field
     required: false
     default: ''
+  text:
+    description: Text field
+    required: false
+    default: ''
   theme-color:
     description: Theme color field
     required: false

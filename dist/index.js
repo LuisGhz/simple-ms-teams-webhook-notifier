@@ -2421,6 +2421,9 @@ class BuildCard {
     setSummary(summary) {
         this.card["summary"] = summary;
     }
+    setText(text) {
+        this.card["text"] = text;
+    }
     setThemeColor(themeColor) {
         this.card["themeColor"] = themeColor;
     }
@@ -7539,6 +7542,7 @@ function run() {
     const webhook_url = core.getInput('webhook_url');
     const summary = core.getInput('summary');
     const title = core.getInput('title');
+    const text = core.getInput('text');
     const theme_color = core.getInput('theme-color');
     const sections = core.getInput('sections');
     const potential_action = core.getInput('potential-action');
@@ -7546,6 +7550,7 @@ function run() {
     let builtCard;
     buildCard.setTitle(title);
     buildCard.setSummary(summary);
+    buildCard.setText(text);
     buildCard.setThemeColor(theme_color);
     buildCard.setSections(sections);
     buildCard.setPotentialAction(potential_action);

@@ -16,6 +16,10 @@ export class BuildCard {
         this.card["summary"] = summary;
     }
 
+    setText(text: string): void {
+        this.card["text"] = text;
+    }
+
     setThemeColor(themeColor: string): void {
         this.card["themeColor"] = themeColor;
     }

@@ -7,6 +7,7 @@ function run() {
   const webhook_url = core.getInput('webhook_url');
   const summary = core.getInput('summary');
   const title = core.getInput('title');
+  const text = core.getInput('text');
   const theme_color = core.getInput('theme-color');
   const sections = core.getInput('sections');
   const potential_action = core.getInput('potential-action');
@@ -16,6 +17,7 @@ function run() {
 
   buildCard.setTitle(title);
   buildCard.setSummary(summary);
+  buildCard.setText(text);
   buildCard.setThemeColor(theme_color);
   buildCard.setSections(sections);
   buildCard.setPotentialAction(potential_action);
