@@ -20,9 +20,9 @@ jobs:
         title: 'Title'
         theme-color: '28a745'
         sections: |
-          - heroImage:
-              image: 'https://github.blog/wp-content/uploads/2019/08/DL-V2-LinkedIn_FB.png?fit=1200%2C630'
-              title: 'Github Actions'
+          - images:
+              - image: 'https://github.blog/wp-content/uploads/2019/08/DL-V2-LinkedIn_FB.png?fit=1200%2C630'
+                title: 'Github Actions'
           - activityTitle: "Section title"
             activitySubtitle: "Section subtitle"
             activityImage: "https://github.com/luisghz.png"
