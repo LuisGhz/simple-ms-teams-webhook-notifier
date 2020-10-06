@@ -2402,63 +2402,6 @@ module.exports = CancelToken;
 
 /***/ }),
 
-/***/ 190:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
-
-"use strict";
-
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core = __importStar(__webpack_require__(470));
-const yaml = __webpack_require__(521);
-class BuildCard {
-    constructor() {
-        this.card = {};
-        this.card["@type"] = "MessageCard";
-        this.card["@context"] = "https://schema.org/extensions";
-        yaml.defaultOptions = {
-            indent: +core.getInput('yaml-ident')
-        };
-    }
-    setTitle(title) {
-        this.card["title"] = title;
-    }
-    setSummary(summary) {
-        this.card["summary"] = summary;
-    }
-    setText(text) {
-        this.card["text"] = text;
-    }
-    setThemeColor(themeColor) {
-        this.card["themeColor"] = themeColor;
-    }
-    setSections(sections) {
-        if (sections !== '') {
-            const sectionsObject = yaml.parse(sections);
-            this.card["sections"] = sectionsObject;
-        }
-    }
-    setPotentialAction(potentialAction) {
-        if (potentialAction !== '') {
-            const potentialActionObject = yaml.parse(potentialAction);
-            this.card["potentialAction"] = potentialActionObject;
-        }
-    }
-    toObject() {
-        return this.card;
-    }
-}
-exports.BuildCard = BuildCard;
-
-
-/***/ }),
-
 /***/ 192:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -6107,6 +6050,70 @@ exports.getState = getState;
 
 /***/ }),
 
+/***/ 510:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const core = __importStar(__webpack_require__(470));
+const yaml = __webpack_require__(521);
+class BuildCard {
+    constructor() {
+        this.card = {};
+        this.card["@type"] = "MessageCard";
+        this.card["@context"] = "https://schema.org/extensions";
+        yaml.defaultOptions = {
+            indent: +core.getInput('yaml-ident')
+        };
+        this.preThemeColor = {
+            Success: '28a745',
+            Warning: 'ffc107',
+            Error: 'dc3545',
+            Info: '2554fc'
+        };
+    }
+    setTitle(title) {
+        this.card["title"] = title;
+    }
+    setSummary(summary) {
+        this.card["summary"] = summary;
+    }
+    setText(text) {
+        this.card["text"] = text;
+    }
+    setThemeColor(themeColor) {
+        const useThemeColor = this.preThemeColor[themeColor] || themeColor;
+        this.card["themeColor"] = useThemeColor;
+    }
+    setSections(sections) {
+        if (sections !== '') {
+            const sectionsObject = yaml.parse(sections);
+            this.card["sections"] = sectionsObject;
+        }
+    }
+    setPotentialAction(potentialAction) {
+        if (potentialAction !== '') {
+            const potentialActionObject = yaml.parse(potentialAction);
+            this.card["potentialAction"] = potentialActionObject;
+        }
+    }
+    toObject() {
+        return this.card;
+    }
+}
+exports.BuildCard = BuildCard;
+
+
+/***/ }),
+
 /***/ 513:
 /***/ (function(__unusedmodule, exports) {
 
@@ -7547,7 +7554,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const axios_1 = __importDefault(__webpack_require__(53));
-const build_card_class_1 = __webpack_require__(190);
+const build_card_class_1 = __webpack_require__(510);
 function run() {
     // Get inputs
     const webhook_url = core.getInput('webhook_url', { required: true });
