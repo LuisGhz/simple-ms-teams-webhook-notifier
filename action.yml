@@ -20,7 +20,7 @@ inputs:
   theme-color:
     description: Theme color field
     required: false
-    default: 28a745
+    default: Success
   sections:
     description: Sections field
     required: false
