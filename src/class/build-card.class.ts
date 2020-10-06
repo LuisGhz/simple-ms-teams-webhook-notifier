@@ -1,9 +1,9 @@
 import * as core from '@actions/core';
 const yaml = require('yaml');
 
-
 export class BuildCard {
     private card: any;
+    private preThemeColor: any;
 
     constructor() {
         this.card = {};
@@ -12,6 +12,13 @@ export class BuildCard {
 
         yaml.defaultOptions = {
             indent: +core.getInput('yaml-ident')
+        }
+
+        this.preThemeColor = {
+            Success: '28a745',
+            Warning: 'ffc107',
+            Error: 'dc3545',
+            Info: '2554fc'
         }
     }
 
@@ -28,7 +35,8 @@ export class BuildCard {
     }
 
     setThemeColor(themeColor: string): void {
-        this.card["themeColor"] = themeColor;
+        const useThemeColor = this.preThemeColor[themeColor] || themeColor;
+        this.card["themeColor"] = useThemeColor;
     }
 
     setSections(sections: string): void {
