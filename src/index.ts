@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import axios from 'axios';
-import { BuildCard } from './build-card.class';
+import { BuildCard } from './class/build-card.class';
 
 function run() {
   // Get inputs
