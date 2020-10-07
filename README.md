@@ -25,7 +25,7 @@ A GitHub Action to send notifications to MS Teams using the syntax of [Legacy Ac
 ```yaml
 - name: run action
       id: run_action
-      uses: luisghz/simple-ms-teams-webhook-notifier@v1
+      uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Card Summary'
@@ -38,7 +38,7 @@ A GitHub Action to send notifications to MS Teams using the syntax of [Legacy Ac
 ```yaml
 - name: run action
       id: run_action
-      uses: luisghz/simple-ms-teams-webhook-notifier@v1
+      uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Card Summary'
@@ -52,7 +52,7 @@ A GitHub Action to send notifications to MS Teams using the syntax of [Legacy Ac
 ```yaml
 - name: run action
       id: run_action
-      uses: luisghz/simple-ms-teams-webhook-notifier@v1
+      uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Card Summary'
@@ -66,7 +66,7 @@ A GitHub Action to send notifications to MS Teams using the syntax of [Legacy Ac
 ```yaml
 - name: run action
       id: run_action
-      uses: luisghz/simple-ms-teams-webhook-notifier@v1.*
+      uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest.*
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Card Summary'
@@ -88,7 +88,7 @@ A GitHub Action to send notifications to MS Teams using the syntax of [Legacy Ac
 ```yaml
 - name: run action
       id: run_action
-      uses: luisghz/simple-ms-teams-webhook-notifier@v1
+      uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Card Summary'
