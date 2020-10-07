@@ -81,11 +81,13 @@ export class BuildCard {
     }
 
     private getAvatarUrl(user: string): string {
+        core.info(`Get ${user} avatar url`);
         axios.get(`https://api.github.com/users/${user}`)
         .then((res: any) => {
+            core.info(res.data.avatar_url);
             return res.data.avatar_url;
         }).catch((err: any) => {
-            console.log(err);
+            console.error(err);
         });
         return 'avatar_url_error';
     }
