@@ -7459,8 +7459,10 @@ const yaml = __webpack_require__(596);
 const axios = __webpack_require__(53);
 class BuildCard {
     constructor() {
+        this.avatarUrl = '';
         const githubContext = github.context;
-        const avatar_url = this.getAvatarUrl(githubContext.actor);
+        const githubActor = github.context.actor;
+        this.getAvatarUrl(githubActor);
         this.card = {};
         this.card["@type"] = "MessageCard";
         this.card["@context"] = "https://schema.org/extensions";
@@ -7474,8 +7476,8 @@ class BuildCard {
             Info: '2554fc'
         };
         this.regexReplacer = [
-            { target: 'actor', replace: githubContext.actor },
-            { target: 'avatar_url', replace: avatar_url }
+            { target: 'actor', replace: githubActor },
+            { target: 'avatar_url', replace: this.avatarUrl }
         ];
     }
     setTitle(title) {
@@ -7513,13 +7515,15 @@ class BuildCard {
         return str;
     }
     getAvatarUrl(user) {
+        core.info(`Get ${user} avatar url`);
         axios.get(`https://api.github.com/users/${user}`)
             .then((res) => {
-            return res.data.avatar_url;
+            core.info(res.data.avatar_url);
+            this.avatarUrl = res.data.avatar_url;
         }).catch((err) => {
-            console.log(err);
+            core.error(err);
+            this.avatarUrl = 'avatar_url_error';
         });
-        return 'avatar_url_error';
     }
 }
 exports.BuildCard = BuildCard;
