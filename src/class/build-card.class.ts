@@ -90,7 +90,7 @@ export class BuildCard {
             this.avatarUrl = res.data.avatar_url;
         }).catch((err: any) => {
             core.error(err);
-            this.avatarUrl = 'avatar_url_error';
+            this.avatarUrl = `${err}`;
         });
     }
 }
