@@ -8,7 +8,7 @@
     "build": "tsc",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
-    "pack": "npm run build && ncc build"
+    "pack": "npm run build && ncc build lib/index.js -o dist && ncc build lib/setup.js -o dist/setup"
   },
   "repository": {
     "type": "git",
