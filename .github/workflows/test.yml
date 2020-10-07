@@ -20,9 +20,9 @@ jobs:
         title: 'Title'
         text: '![Alt text for the image](https://pbs.twimg.com/media/C8NK1XGUIAA-CJK.jpg)'
         sections: |
-          - activityTitle: "Section title by {github:actor}"
-            activitySubtitle: "Section subtitle"
-            activityImage: "{github:avatar_url}"
+          - activityTitle: "Section title by {gh:actor}"
+            activitySubtitle: "Section subtitle. Click [here]({gh:actor-url}) to go to user profile"
+            activityImage: "{gh:avatar-url}"
             facts:
               - name: 'Fact 1'
                 value: 'Value 1'
