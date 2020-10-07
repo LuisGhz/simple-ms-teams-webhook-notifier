@@ -1,11 +1,19 @@
 import * as core from '@actions/core';
+import *  as github from '@actions/github';
 const yaml = require('yaml');
+const axios = require('axios');
+
+import { RegexReplacer } from '../interface/RegexReplacer.interface';
 
 export class BuildCard {
     private card: any;
     private preThemeColor: any;
+    private regexReplacer: RegexReplacer[];
 
     constructor() {
+        const githubContext: any = github.context;
+        const avatar_url: string = this.getAvatarUrl(githubContext.actor)
+
         this.card = {};
         this.card["@type"] = "MessageCard";
         this.card["@context"] = "https://schema.org/extensions";
@@ -20,18 +28,23 @@ export class BuildCard {
             Error: 'dc3545',
             Info: '2554fc'
         }
+
+        this.regexReplacer = [
+            { target: 'actor', replace: githubContext.actor },
+            { target: 'avatar_url', replace: avatar_url }
+        ]
     }
 
     setTitle(title: string): void {
-        this.card["title"] = title;
+        this.card["title"] = this.replaceTemplates(title);
     }
 
     setSummary(summary: string): void {
-        this.card["summary"] = summary;
+        this.card["summary"] = this.replaceTemplates(summary);
     }
 
     setText(text: string): void {
-        this.card["text"] = text;
+        this.card["text"] = this.replaceTemplates(text);
     }
 
     setThemeColor(themeColor: string): void {
@@ -41,7 +54,7 @@ export class BuildCard {
 
     setSections(sections: string): void {
         if (sections !== '') {
-            const sectionsObject: any = yaml.parse(sections);
+            const sectionsObject: any = yaml.parse(this.replaceTemplates(sections));
 
             this.card["sections"] = sectionsObject;
         }
@@ -57,5 +70,23 @@ export class BuildCard {
 
     toObject(): any {
         return this.card;
+    }
+
+    private replaceTemplates(str: string): string {
+        this.regexReplacer.map(el => {
+            str = str.replace(new RegExp(`{github:${el.target}}`, 'g'), el.replace);
+        });
+
+        return str;
+    }
+
+    private getAvatarUrl(user: string): string {
+        axios.get(`https://api.github.com/users/${user}`)
+        .then((res: any) => {
+            return res.data.avatar_url;
+        }).catch((err: any) => {
+            console.log(err);
+        });
+        return 'avatar_url_error';
     }
 }
