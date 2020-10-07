@@ -35,7 +35,6 @@ inputs:
     default: '2'
 runs:
   using: 'node12'
-  pre: 'dist/setup/index.js'
   main: 'dist/index.js'
 branding:
   color: "blue"
