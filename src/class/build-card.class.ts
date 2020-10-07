@@ -31,7 +31,8 @@ export class BuildCard {
 
         this.regexReplacer = [
             { target: 'actor', replace: githubActor },
-            { target: 'avatar_url', replace: `${process.env.avatar_url}` }
+            { target: 'actor-url', replace: `https://github.com/${githubActor}` },
+            { target: 'avatar-url', replace: `${process.env.avatar_url}` },
         ]
     }
 
@@ -74,7 +75,7 @@ export class BuildCard {
 
     private replaceTemplates(str: string): string {
         this.regexReplacer.map(el => {
-            str = str.replace(new RegExp(`{github:${el.target}}`, 'g'), el.replace);
+            str = str.replace(new RegExp(`{gh:${el.target}}`, 'g'), el.replace);
         });
 
         return str;
