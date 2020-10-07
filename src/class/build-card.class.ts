@@ -9,12 +9,10 @@ export class BuildCard {
     private card: any;
     private preThemeColor: any;
     private regexReplacer: RegexReplacer[];
-    private avatarUrl: string = '';
 
     constructor() {
         const githubContext: any = github.context;
-        const githubActor: string = github.context.actor;
-        this.getAvatarUrl(githubActor);
+        const githubActor: string = githubContext.actor;
 
         this.card = {};
         this.card["@type"] = "MessageCard";
@@ -33,7 +31,7 @@ export class BuildCard {
 
         this.regexReplacer = [
             { target: 'actor', replace: githubActor },
-            { target: 'avatar_url', replace: this.avatarUrl }
+            { target: 'avatar_url', replace: `${process.env.avatar_url}` }
         ]
     }
 
@@ -80,17 +78,5 @@ export class BuildCard {
         });
 
         return str;
-    }
-
-    private getAvatarUrl(user: string): void {
-        core.info(`Get ${user} avatar url`);
-        axios.get(`https://api.github.com/users/${user}`)
-        .then((res: any) => {
-            core.info(res.data.avatar_url);
-            this.avatarUrl = res.data.avatar_url;
-        }).catch((err: any) => {
-            core.error(err);
-            this.avatarUrl = 'avatar_url_error';
-        });
     }
 }
