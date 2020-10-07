@@ -9,7 +9,8 @@
 - Preset theme colors.
 - Create RegexReplacer interface.
 - Create template **{github:actor}** to get the username who execute the workflow.
-- Get avatar_url from https://api.github.com/users/{username} in BuildCard class.
+- Make run function async
+- Get avatar_url from https://api.github.com/users/{username} in index file with axios using await.
 - Create template **{github:avatar_url}** to get the avatar_url.
 
 ### Changed
