@@ -21,6 +21,7 @@ async function run() {
   const theme_color = core.getInput('theme-color');
   const sections = core.getInput('sections');
   const potential_action = core.getInput('potential-action');
+  const print_json: boolean = core.getInput('print-json') == "true";
   
   const buildCard = new BuildCard();
   let builtCard: any;
@@ -33,7 +34,10 @@ async function run() {
   buildCard.setPotentialAction(potential_action);
 
   builtCard = buildCard.toObject();
-  core.info(JSON.stringify(builtCard, null, 4));
+
+  if (print_json) {
+    core.info(JSON.stringify(builtCard, null, 4));
+  }
 
   axios.post(webhook_url, builtCard)
   .then(res => {

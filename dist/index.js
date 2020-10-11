@@ -10781,6 +10781,7 @@ function run() {
         const theme_color = core.getInput('theme-color');
         const sections = core.getInput('sections');
         const potential_action = core.getInput('potential-action');
+        const print_json = core.getInput('print-json') == "true";
         const buildCard = new build_card_class_1.BuildCard();
         let builtCard;
         buildCard.setTitle(title);
@@ -10790,7 +10791,9 @@ function run() {
         buildCard.setSections(sections);
         buildCard.setPotentialAction(potential_action);
         builtCard = buildCard.toObject();
-        core.info(JSON.stringify(builtCard, null, 4));
+        if (print_json) {
+            core.info(JSON.stringify(builtCard, null, 4));
+        }
         axios_1.default.post(webhook_url, builtCard)
             .then(res => {
             core.info(res.data);

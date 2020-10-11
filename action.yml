@@ -33,6 +33,10 @@ inputs:
     description: The number of spaces to use when indenting code
     required: false
     default: '2'
+  print-json:
+    description: If true the json payload will be print in step.
+    required: false
+    default: 'false'
 runs:
   using: 'node12'
   main: 'dist/index.js'
