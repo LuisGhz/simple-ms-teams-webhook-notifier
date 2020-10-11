@@ -33,6 +33,7 @@ export class BuildCard {
             { target: 'actor', replace: githubActor },
             { target: 'actor-url', replace: `https://github.com/${githubActor}` },
             { target: 'avatar-url', replace: `${process.env.avatar_url}` },
+            { target: 'run-number-link', replace: `[#${githubContext.runNumber}](${githubContext.payload.repository.html_url}/actions/runs/${githubContext.runId})` }
         ]
     }
 
