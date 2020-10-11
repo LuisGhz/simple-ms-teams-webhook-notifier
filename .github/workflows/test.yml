@@ -18,7 +18,8 @@ jobs:
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Summary'
         title: 'Title'
-        text: '![Alt text for the image](https://pbs.twimg.com/media/C8NK1XGUIAA-CJK.jpg)'
+        # text: '![Alt text for the image](https://pbs.twimg.com/media/C8NK1XGUIAA-CJK.jpg)'
+        text: 'Text'
         sections: |
           - activityTitle: "Section title by {gh:actor}"
             activitySubtitle: "Section subtitle. Click [here]({gh:actor-url}) to go to user profile. Or click on {gh:run-number-link} to go to executed workflow."
