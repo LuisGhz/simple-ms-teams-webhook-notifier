@@ -37,9 +37,7 @@ jobs:
                 - os: "default"
                   uri: "https://docs.microsoft.com/outlook/actionable-messages"
 
-    - uses: actions/checkout@v1
     - name: run action with false print-json
-      id: run_action
       uses: ./
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
