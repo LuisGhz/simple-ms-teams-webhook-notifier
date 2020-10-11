@@ -36,3 +36,19 @@ jobs:
               targets:
                 - os: "default"
                   uri: "https://docs.microsoft.com/outlook/actionable-messages"
+
+    - uses: actions/checkout@v1
+    - name: run action with false print-json
+      id: run_action
+      uses: ./
+      with: 
+        webhook_url: ${{ secrets.WEBHOOK_URL }}
+        summary: 'Summary'
+        title: 'Title with false print-json'
+        print-json: false
+        # text: '![Alt text for the image](https://pbs.twimg.com/media/C8NK1XGUIAA-CJK.jpg)'
+        text: 'Text'
+        sections: |
+          - activityTitle: "Section title by {gh:actor}"
+            activitySubtitle: "Section subtitle. Click [here]({gh:actor-url}) to go to user profile. Or click on {gh:run-number-link} to go to executed workflow."
+            activityImage: "{gh:avatar-url}"
