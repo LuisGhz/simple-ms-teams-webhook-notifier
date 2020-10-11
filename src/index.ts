@@ -10,6 +10,7 @@ async function run() {
       core.info('Setup Ok');
       process.env.avatar_url = res.data.avatar_url;
   }).catch((err: any) => {
+      process.env.avatar_url = 'https://avatars1.githubusercontent.com/u/9919?v=4';
       core.error(err);
   });
   
