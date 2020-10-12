@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import *  as github from '@actions/github';
-const yaml = require('yaml');
+import YAML from 'yaml'
 const axios = require('axios');
 
 import { RegexReplacer } from '../interface/RegexReplacer.interface';
@@ -9,6 +9,7 @@ export class BuildCard {
     private card: any;
     private preThemeColor: any;
     private regexReplacer: RegexReplacer[];
+    private identNumber: number;
 
     constructor() {
         const githubContext: any = github.context;
@@ -17,10 +18,8 @@ export class BuildCard {
         this.card = {};
         this.card["@type"] = "MessageCard";
         this.card["@context"] = "https://schema.org/extensions";
-
-        yaml.defaultOptions = {
-            indent: +core.getInput('yaml-ident')
-        }
+        
+        this.identNumber = +core.getInput('yaml-ident');
 
         this.preThemeColor = {
             Success: '28a745',
@@ -56,7 +55,9 @@ export class BuildCard {
 
     setSections(sections: string): void {
         if (sections !== '') {
-            const sectionsObject: any = yaml.parse(this.replaceTemplates(sections));
+            const sectionsObject: any = YAML.parse(this.replaceTemplates(sections), {
+                indent: this.identNumber
+            });
 
             this.card["sections"] = sectionsObject;
         }
@@ -64,7 +65,9 @@ export class BuildCard {
 
     setPotentialAction(potentialAction: string): void {
         if (potentialAction !== '') {
-            const potentialActionObject: any = yaml.parse(potentialAction);
+            const potentialActionObject: any = YAML.parse(potentialAction, {
+                indent: this.identNumber
+            });
     
             this.card["potentialAction"] = potentialActionObject;
         }
