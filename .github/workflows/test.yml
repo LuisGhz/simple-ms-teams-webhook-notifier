@@ -40,7 +40,7 @@ jobs:
     - name: run action with false print-json
       uses: ./
       with: 
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
+        # webhook_url: ${{ secrets.WEBHOOK_URL }}
         summary: 'Summary'
         title: 'Title with false print-json'
         print-json: false
