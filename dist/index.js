@@ -13114,7 +13114,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const github = __importStar(__webpack_require__(469));
 const yaml_1 = __importDefault(__webpack_require__(596));
-const axios = __webpack_require__(53);
 class BuildCard {
     constructor() {
         const githubContext = github.context;

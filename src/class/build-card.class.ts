@@ -1,7 +1,6 @@
 import * as core from '@actions/core';
 import *  as github from '@actions/github';
 import YAML from 'yaml'
-const axios = require('axios');
 
 import { RegexReplacer } from '../interface/RegexReplacer.interface';
 
