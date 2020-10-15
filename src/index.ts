@@ -19,8 +19,7 @@ async function run() {
   try {
     webhook_url = core.getInput('webhook_url', { required: true });
   } catch(err) {
-    core.error(err);
-    core.setFailed(err);
+    return core.setFailed(err);
   }
   const summary = core.getInput('summary');
   const title = core.getInput('title');
