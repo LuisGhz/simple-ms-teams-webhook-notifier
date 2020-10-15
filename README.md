@@ -23,11 +23,12 @@ A GitHub Action to send notifications to MS Teams using the syntax of [Legacy Ac
 
 Use them in **title**, **summary**, **text** and **sections** fields to easily display information
 
-| Syntax          | Description                                              | Output                                                 |
-| --------------- | -------------------------------------------------------- | ------------------------------------------------------ |
-| {gh:actor}      | Return the username that runs the workflow               | UserName                                               |
-| {gh:actor-url}  | Returns the URL of the user who runs the program.        | https://github.com/UserName                            |
-| {gh:avatar-url} | Returns the avatar URL of the user who runs the program. | https://avatars2.githubusercontent.com/u/123456789?v=4 |
+| Syntax               | Description                                              | Output                                                       |
+| -------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| {gh:actor}           | Return the username that runs the workflow               | UserName                                                     |
+| {gh:actor-url}       | Returns the URL of the user who runs the program.        | https://github.com/UserName                                  |
+| {gh:avatar-url}      | Returns the avatar URL of the user who runs the program. | https://avatars2.githubusercontent.com/u/123456789?v=4       |
+| {gh:run-number-link} | Returns a link to the run id displaying run number       | #1 => https://github.com/user/repository/actions/runs/{run_id} |
 
 
 
