@@ -9,6 +9,7 @@
 - **print-json** if true payload will be print on step.
 - Set default avatar_url if an error accurs.
 - Set yaml conf in each execution.
+- Try catch block to webhook_url assigment.
 
 ### Changed
 
