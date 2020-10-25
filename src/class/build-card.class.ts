@@ -1,8 +1,8 @@
 import * as core from '@actions/core';
-import *  as github from '@actions/github';
 import YAML from 'yaml'
 
 import { textTemplate } from '../ts-json/text-template.json';
+import { themeColorTemplate } from '../ts-json/theme-color-template.json';
 
 export class BuildCard {
     private card: any;
@@ -15,13 +15,6 @@ export class BuildCard {
         this.card["@context"] = "https://schema.org/extensions";
         
         this.identNumber = +core.getInput('yaml-ident');
-
-        this.preThemeColor = {
-            Success: '28a745',
-            Warning: 'ffc107',
-            Error: 'dc3545',
-            Info: '2554fc'
-        }
     }
 
     setTitle(title: string): void {
@@ -37,7 +30,7 @@ export class BuildCard {
     }
 
     setThemeColor(themeColor: string): void {
-        const useThemeColor = this.preThemeColor[themeColor] || themeColor;
+        const useThemeColor = themeColorTemplate[themeColor] || themeColor;
         this.card["themeColor"] = useThemeColor;
     }
 
