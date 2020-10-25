@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import YAML from 'yaml'
 
-import { textTemplate, themeColorTemplate } from '../ts-json';
+import { textTemplate, replaceTextByTemplates, themeColorTemplate } from '../ts-json';
 
 export class BuildCard {
     private card: any;
@@ -57,10 +57,6 @@ export class BuildCard {
     }
 
     private replaceTemplates(str: string): string {
-        textTemplate.map(el => {
-            str = str.replace(new RegExp(`{gh:${el.target}}`, 'g'), el.replace);
-        });
-
-        return str;
+        return replaceTextByTemplates(str);
     }
 }
