@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import YAML from 'yaml'
 
-import { textTemplate, replaceTextByTemplates, themeColorTemplate } from '../ts-json';
+import { replaceTextByTemplates, themeColorTemplate } from '../ts-json';
 
 export class BuildCard {
     private card: any;
