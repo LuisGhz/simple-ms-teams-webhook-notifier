@@ -1,4 +1,4 @@
-export interface RegexReplacer {
+export interface TextTemplate {
     target: string;
     replace: string;
 }
