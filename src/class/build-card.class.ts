@@ -6,7 +6,6 @@ import { themeColorTemplate } from '../ts-json/theme-color-template.json';
 
 export class BuildCard {
     private card: any;
-    private preThemeColor: any;
     private identNumber: number;
 
     constructor() {
