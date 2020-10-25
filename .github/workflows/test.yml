@@ -24,7 +24,7 @@ jobs:
         text: 'Text'
         sections: |
           - activityTitle: "Section title by {gh:actor}"
-            activitySubtitle: "Section subtitle. Click [here]({gh:actor-url}) or {gh:actor-url} to go to user profile. Or click on {gh:run-number-link} to go to executed workflow."
+            activitySubtitle: "Section subtitle. Click [here]({gh:actor-url}) or {gh:actor-link} to go to user profile. Or click on {gh:run-number-link} to go to executed workflow."
             activityImage: "{gh:avatar-url}"
             facts:
               - name: 'Fact 1'
