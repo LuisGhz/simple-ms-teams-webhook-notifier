@@ -8,4 +8,4 @@ const textTemplate: TextTemplate[] = [
     { target: 'run-number-link', replace: `[#${ github.context.runNumber }](${ github.context.payload?.repository?.html_url }/actions/runs/${ github.context.runId })` }
 ]
 
-export { textTemplate };
+export default textTemplate;

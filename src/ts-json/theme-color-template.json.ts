@@ -5,4 +5,4 @@ const themeColorTemplate: any = {
   Info: '2554fc'
 }
 
-export { themeColorTemplate };
+export default themeColorTemplate;
