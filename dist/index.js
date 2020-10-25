@@ -1256,6 +1256,23 @@ module.exports = __webpack_require__(352);
 
 /***/ }),
 
+/***/ 55:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.themeColorTemplate = {
+    Success: '28a745',
+    Warning: 'ffc107',
+    Error: 'dc3545',
+    Info: '2554fc',
+    Canceled: '4f4f4f'
+};
+
+
+/***/ }),
+
 /***/ 82:
 /***/ (function(__unusedmodule, exports) {
 
@@ -6156,6 +6173,21 @@ function getState(name) {
 }
 exports.getState = getState;
 //# sourceMappingURL=core.js.map
+
+/***/ }),
+
+/***/ 474:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const text_template_json_1 = __webpack_require__(924);
+exports.textTemplate = text_template_json_1.textTemplate;
+exports.replaceTextByTemplates = text_template_json_1.replaceTextByTemplates;
+const theme_color_template_json_1 = __webpack_require__(55);
+exports.themeColorTemplate = theme_color_template_json_1.themeColorTemplate;
+
 
 /***/ }),
 
@@ -13112,28 +13144,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
-const github = __importStar(__webpack_require__(469));
 const yaml_1 = __importDefault(__webpack_require__(596));
+const ts_json_1 = __webpack_require__(474);
 class BuildCard {
     constructor() {
-        const githubContext = github.context;
-        const githubActor = githubContext.actor;
         this.card = {};
         this.card["@type"] = "MessageCard";
         this.card["@context"] = "https://schema.org/extensions";
         this.identNumber = +core.getInput('yaml-ident');
-        this.preThemeColor = {
-            Success: '28a745',
-            Warning: 'ffc107',
-            Error: 'dc3545',
-            Info: '2554fc'
-        };
-        this.regexReplacer = [
-            { target: 'actor', replace: githubActor },
-            { target: 'actor-url', replace: `https://github.com/${githubActor}` },
-            { target: 'avatar-url', replace: `${process.env.avatar_url}` },
-            { target: 'run-number-link', replace: `[#${githubContext.runNumber}](${githubContext.payload.repository.html_url}/actions/runs/${githubContext.runId})` }
-        ];
     }
     setTitle(title) {
         this.card["title"] = this.replaceTemplates(title);
@@ -13145,7 +13163,7 @@ class BuildCard {
         this.card["text"] = this.replaceTemplates(text);
     }
     setThemeColor(themeColor) {
-        const useThemeColor = this.preThemeColor[themeColor] || themeColor;
+        const useThemeColor = ts_json_1.themeColorTemplate[themeColor] || themeColor;
         this.card["themeColor"] = useThemeColor;
     }
     setSections(sections) {
@@ -13168,10 +13186,7 @@ class BuildCard {
         return this.card;
     }
     replaceTemplates(str) {
-        this.regexReplacer.map(el => {
-            str = str.replace(new RegExp(`{gh:${el.target}}`, 'g'), el.replace);
-        });
-        return str;
+        return ts_json_1.replaceTextByTemplates(str);
     }
 }
 exports.BuildCard = BuildCard;
@@ -13449,6 +13464,39 @@ catch (error) {
   debug = function () { /* */ };
 }
 module.exports = debug;
+
+
+/***/ }),
+
+/***/ 924:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", { value: true });
+const github = __importStar(__webpack_require__(469));
+exports.textTemplate = [
+    { target: 'actor', replace: github.context.actor },
+    { target: 'actor-url', replace: `https://github.com/${github.context.actor}` },
+    { target: 'actor-link', replace: `[${github.context.actor}](https://github.com/${github.context.actor})` },
+    { target: 'avatar-url', replace: `${process.env.avatar_url}` },
+    { target: 'run-number-link', replace: `[#${github.context.runNumber}](${(_b = (_a = github.context.payload) === null || _a === void 0 ? void 0 : _a.repository) === null || _b === void 0 ? void 0 : _b.html_url}/actions/runs/${github.context.runId})` }
+];
+function replaceTextByTemplates(str) {
+    exports.textTemplate.map(el => {
+        str = str.replace(new RegExp(`{gh:${el.target}}`, 'g'), el.replace);
+    });
+    return str;
+}
+exports.replaceTextByTemplates = replaceTextByTemplates;
 
 
 /***/ }),
