@@ -18,6 +18,7 @@ jobs:
       uses: ./
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
+        summary: 'Summary'
         title: 'Title'
         print-json: true
         # text: '![Alt text for the image](https://pbs.twimg.com/media/C8NK1XGUIAA-CJK.jpg)'
@@ -40,6 +41,7 @@ jobs:
     - name: Send Error message to MS Teams if job fails
       uses: ./
       with:
+        summary: 'TR'
         print-json: true
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         title: Something was wrong with ${{ github.workflow }}
