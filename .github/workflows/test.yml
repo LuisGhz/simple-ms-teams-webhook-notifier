@@ -50,8 +50,6 @@ jobs:
           - activityTitle: "Something was wrong with ${{ github.workflow }} executed by {gh:actor}"
             activitySubtitle: "${{ github.workflow }} {gh:run-number-link}"
             facts:
-              - name: "Enviroment:"
-                value: "${{ env.INPUT_ENVIROMENT }}"
               - name: "Repository"
                 value: "[${{ github.repository }}](https://github.com/${{ github.repository }})"
               - name: "Branch ref:"
