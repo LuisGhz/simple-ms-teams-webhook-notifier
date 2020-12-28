@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.3.0] - 2020-10-25
+
+### Added
+
+- **text-template.json.ts**: Contain **text templates** (as db).
+- index file in ts-json folder to use it as barrel file.
+- Canceled theme (#4f4f4f).
+- **replaceTextByTemplates** and export it.
+- **actor-link** text template.
+
+### Changed
+
+- **templates** name to **text templates**.
+- Move **text templates** from build card class to a separate file.
+- **RegexReplacer** interface name to **TextTemplate**.
+- **preThemeColor** name to **themeColorTemplate**.
+- Move **theme color templates** to a separate file.
+
+### Fixed
+
+- Fixed item
+
+### Removed
+
+- Remove item
 
 ## [1.2.0] - 2020-10-15
 
