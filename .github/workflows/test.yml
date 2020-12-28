@@ -49,7 +49,6 @@ jobs:
         sections: |
           - activityTitle: "Something was wrong with ${{ github.workflow }} executed by {gh:actor}"
             activitySubtitle: "${{ github.workflow }} {gh:run-number-link}"
-            activityImage: "{gh:avatar-url}"
             facts:
               - name: "Enviroment:"
                 value: "${{ env.INPUT_ENVIROMENT }}"
