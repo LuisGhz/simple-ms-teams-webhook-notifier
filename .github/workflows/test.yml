@@ -18,7 +18,6 @@ jobs:
       uses: ./
       with: 
         webhook_url: ${{ secrets.WEBHOOK_URL }}
-        summary: 'Summary'
         title: 'Title'
         print-json: true
         # text: '![Alt text for the image](https://pbs.twimg.com/media/C8NK1XGUIAA-CJK.jpg)'
