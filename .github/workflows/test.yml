@@ -43,7 +43,7 @@ jobs:
       uses: ./
       with:
         print-json: true
-        webhook_url: ${{ secrets.WEBHOOK_URI }}
+        webhook_url: ${{ secrets.WEBHOOK_URL }}
         title: Something was wrong with ${{ github.workflow }}
         theme-color: 'Error'
         sections: |
